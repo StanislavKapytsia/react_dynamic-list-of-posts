@@ -21,7 +21,7 @@ export const App = () => {
   const [catchError, setCatchError] = useState(false);
 
   const [posts, setPosts] = useState<Post[]>([]);
-  const [selectedPost, setSelectedpost] = useState<Post | null>(null);
+  const [selectedPost, setSelectedPost] = useState<Post | null>(null);
   const [emptyPosts, setEmptyPosts] = useState(false);
 
   const fetchUsers = async () => {
@@ -47,6 +47,7 @@ export const App = () => {
 
   useEffect(() => {
     setPosts([]);
+    setEmptyPosts(false);
 
     if (users && userId) {
       const fetchPosts = async () => {
@@ -85,7 +86,7 @@ export const App = () => {
                   users={users}
                   userId={userId}
                   setUserId={setUserId}
-                  setSelectedpost={setSelectedpost}
+                  setSelectedPost={setSelectedPost}
                 />
               </div>
 
@@ -113,7 +114,7 @@ export const App = () => {
                   <PostsList
                     posts={posts}
                     selectedPost={selectedPost}
-                    setSelectedpost={setSelectedpost}
+                    setSelectedPost={setSelectedPost}
                   />
                 )}
               </div>

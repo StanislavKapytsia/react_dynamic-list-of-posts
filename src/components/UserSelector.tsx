@@ -7,14 +7,14 @@ interface Props {
   users: User[];
   userId: number | null;
   setUserId: React.Dispatch<React.SetStateAction<number | null>>;
-  setSelectedpost: React.Dispatch<React.SetStateAction<Post | null>>;
+  setSelectedPost: React.Dispatch<React.SetStateAction<Post | null>>;
 }
 
 export const UserSelector: React.FC<Props> = ({
   users,
   userId,
   setUserId,
-  setSelectedpost,
+  setSelectedPost,
 }) => {
   const [showList, setShowList] = useState(false);
   const [userName, setUserName] = useState('Choose a user');
@@ -71,7 +71,7 @@ export const UserSelector: React.FC<Props> = ({
                 setUserId(user.id);
                 setUserName(user.name);
                 setShowList(false);
-                setSelectedpost(null);
+                setSelectedPost(null);
               }}
             >
               {user.name}

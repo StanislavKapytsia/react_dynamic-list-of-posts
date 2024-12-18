@@ -4,19 +4,19 @@ import classNames from 'classnames';
 interface Props {
   posts: Post[];
   selectedPost: Post | null;
-  setSelectedpost: React.Dispatch<React.SetStateAction<Post | null>>;
+  setSelectedPost: React.Dispatch<React.SetStateAction<Post | null>>;
 }
 
 export const PostsList: React.FC<Props> = ({
   posts,
   selectedPost,
-  setSelectedpost,
+  setSelectedPost,
 }) => {
   const handleButtonSwitch = (currentPost: Post) => {
     if (selectedPost && selectedPost.id === currentPost.id) {
-      setSelectedpost(null);
+      setSelectedPost(null);
     } else {
-      setSelectedpost(currentPost);
+      setSelectedPost(currentPost);
     }
   };
 

@@ -77,7 +77,7 @@ export const NewCommentForm: React.FC<Props> = ({
     return doesEmpty;
   };
 
-  const addCommetns = async () => {
+  const addComments = async () => {
     const newData = {
       postId: selectedPost.id,
       name: userName,
@@ -112,15 +112,10 @@ export const NewCommentForm: React.FC<Props> = ({
       { value: commentText, setError: setCommentTextError },
     ];
 
-    const hasEmptyForm =
-      !validateInput(userName) &&
-      !validateInput(userMail) &&
-      !validateInput(commentText);
+    const allEmpty = inputs.every(input => !validateInput(input.value));
 
-    if (hasEmptyForm) {
-      setUserNameError(true);
-      setUserMailError(true);
-      setCommentTextError(true);
+    if (allEmpty) {
+      inputs.forEach(input => input.setError(true));
 
       return;
     }
@@ -139,7 +134,7 @@ export const NewCommentForm: React.FC<Props> = ({
       return;
     }
 
-    addCommetns();
+    addComments();
   };
 
   return (

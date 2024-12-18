@@ -53,9 +53,9 @@ export const PostDetails: React.FC<Props> = ({ posts, selectedPost }) => {
   };
 
   const handleDelete = async (id: number) => {
-    const updatedCommnets = comments.filter(comment => comment.id !== id);
+    const updatedComments = comments.filter(comment => comment.id !== id);
 
-    setComments(updatedCommnets);
+    setComments(updatedComments);
 
     try {
       await client.delete(`/comments/${id}`);
@@ -64,7 +64,7 @@ export const PostDetails: React.FC<Props> = ({ posts, selectedPost }) => {
 
       if (deletedComment) {
         setTimeout(() => {
-          setComments([...updatedCommnets, deletedComment]);
+          setComments([...updatedComments, deletedComment]);
           setLoadingError(true);
 
           setTimeout(() => {
@@ -88,12 +88,6 @@ export const PostDetails: React.FC<Props> = ({ posts, selectedPost }) => {
           {loading && <Loader />}
 
           {loadingError && (
-            <div className="notification is-danger" data-cy="CommentsError">
-              Something went wrong
-            </div>
-          )}
-
-          {false && (
             <div className="notification is-danger" data-cy="CommentsError">
               Something went wrong
             </div>
